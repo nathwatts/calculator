@@ -21,17 +21,16 @@ class CalculatorControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        // Submit form with valid data
         $crawler = $client->request('GET', '/calculator');
         $form = $crawler->selectButton('Calculate')->form([
-            'a' => 10,
-            'b' => 25,
-            'operation' => 'add',
+            'calculator[a]' => 10,
+            'calculator[b]' => 5,
+            'calculator[operation]' => 'add',
         ]);
-
+    
         $client->submit($form);
-
-        $this->assertResponseIsSuccessful();
-        $this->assertSelectorTextContains('h3', 'Result: 35');
+        $client->followRedirect();
+    
+        $this->assertSelectorTextContains('h3', 'Result: 15');
     }
 }

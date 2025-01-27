@@ -3,6 +3,7 @@ namespace App\Service;
 
 class CalculatorService
 {
+    
     public function calculate(float $a, float $b, string $operation): float
     {
         switch ($operation) {
