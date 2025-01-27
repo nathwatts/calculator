@@ -18,7 +18,7 @@ class CalculatorController extends AbstractController
         $this->calculator = $calculator;
     }
 
-    #[Route('/calculator', name: 'calculator')]
+    #[Route('/', name: 'calculator')]
     public function index(Request $request): Response
     {
         $form = $this->createForm(CalculatorType::class);
